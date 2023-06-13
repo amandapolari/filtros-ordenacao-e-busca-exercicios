@@ -19,7 +19,7 @@ const CardsContainer = styled.div`
     justify-items: center;
 `;
 function App() {
-    const [pesquisa, setPesquisa] = useState('');
+    const [search, setSearch] = useState('');
     const [idFilter, setIdFilter] = useState('');
 
     return (
@@ -28,8 +28,8 @@ function App() {
             <Header
                 idFilter={idFilter}
                 setIdFilter={setIdFilter}
-                pesquisa={pesquisa}
-                setPesquisa={setPesquisa}
+                search={search}
+                setSearch={setSearch}
             />
             <CardsContainer>
                 {pokemons
@@ -41,7 +41,7 @@ function App() {
                     .filter((pokemon) => {
                         return pokemon.name.english
                             .toLowerCase()
-                            .includes(pesquisa.toLowerCase());
+                            .includes(search.toLowerCase());
                     })
                     .map((pokemon) => {
                         return (

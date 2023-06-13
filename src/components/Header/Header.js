@@ -24,7 +24,7 @@ const Header = (props) => {
     ];
 
     const handleSearch = (e) => {
-        props.setPesquisa(e.target.value);
+        props.setSearch(e.target.value);
     };
 
     const handleIdSearch = (e) => {
@@ -43,7 +43,7 @@ const Header = (props) => {
                 type="text"
                 placeholder="Buscar por nome"
                 onChange={handleSearch}
-                value={props.pesquisa}
+                value={props.search}
             />
             <select>
                 <option value="">Ordenar</option>
