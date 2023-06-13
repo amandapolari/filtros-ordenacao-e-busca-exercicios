@@ -1,7 +1,16 @@
 import React from 'react';
 import { Container } from './styles';
 
-const Header = (props) => {
+const Header = ({
+    setSearch,
+    setIdFilter,
+    idFilter,
+    search,
+    sortSearch,
+    setSortSearch,
+}) => {
+    console.log(sortSearch);
+
     const pokemontypesArray = [
         'Normal',
         'Fire',
@@ -24,11 +33,11 @@ const Header = (props) => {
     ];
 
     const handleSearch = (e) => {
-        props.setSearch(e.target.value);
+        setSearch(e.target.value);
     };
 
     const handleIdSearch = (e) => {
-        props.setIdFilter(e.target.value);
+        setIdFilter(e.target.value);
     };
 
     return (
@@ -37,18 +46,23 @@ const Header = (props) => {
                 type="number"
                 placeholder="Buscar por id"
                 onChange={handleIdSearch}
-                value={props.idFilter}
+                value={idFilter}
             />
             <input
                 type="text"
                 placeholder="Buscar por nome"
                 onChange={handleSearch}
-                value={props.search}
+                value={search}
             />
-            <select>
-                <option value="">Ordenar</option>
-                <option value="">Crescente</option>
-                <option value="">Decrescente</option>
+            <select
+                value={sortSearch}
+                onChange={(event) => {
+                    setSortSearch(event.target.value);
+                }}
+            >
+                <option>Ordenar</option>
+                <option>Crescente</option>
+                <option>Decrescente</option>
             </select>
             <select name="tipo" id="tipo">
                 <option value="">Selecione um tipo</option>

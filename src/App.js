@@ -21,6 +21,7 @@ const CardsContainer = styled.div`
 function App() {
     const [search, setSearch] = useState('');
     const [idFilter, setIdFilter] = useState('');
+    const [sortSearch, setSortSearch] = useState('');
 
     return (
         <>
@@ -30,6 +31,8 @@ function App() {
                 setIdFilter={setIdFilter}
                 search={search}
                 setSearch={setSearch}
+                sortSearch={sortSearch}
+                setSortSearch={setSortSearch}
             />
             <CardsContainer>
                 {pokemons
@@ -42,6 +45,23 @@ function App() {
                         return pokemon.name.english
                             .toLowerCase()
                             .includes(search.toLowerCase());
+                    })
+                    .sort((a, b) => {
+                        if (sortSearch === 'Crescente') {
+                            if (a.name.english > b.name.english) {
+                                return 1;
+                            }
+                            if (a.name.english < b.name.english) {
+                                return -1;
+                            }
+                        } else if (sortSearch === 'Decrescente') {
+                            if (a.name.english > b.name.english) {
+                                return -1;
+                            }
+                            if (a.name.english < b.name.english) {
+                                return 1;
+                            }
+                        }
                     })
                     .map((pokemon) => {
                         return (
