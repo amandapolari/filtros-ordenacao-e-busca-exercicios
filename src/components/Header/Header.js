@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from './styles';
+import { Container, Select, Input } from './styles';
 
 const Header = ({
     setSearch,
@@ -45,19 +45,19 @@ const Header = ({
 
     return (
         <Container>
-            <input
+            <Input
                 type="number"
                 placeholder="Buscar por id"
                 onChange={handleIdSearch}
                 value={idFilter}
             />
-            <input
+            <Input
                 type="text"
                 placeholder="Buscar por nome"
                 onChange={handleSearch}
                 value={search}
             />
-            <select
+            <Select
                 value={sortSearch}
                 onChange={(event) => {
                     setSortSearch(event.target.value);
@@ -66,8 +66,8 @@ const Header = ({
                 <option>Ordenar</option>
                 <option>Crescente</option>
                 <option>Decrescente</option>
-            </select>
-            <select
+            </Select>
+            <Select
                 name="tipo"
                 id="tipo"
                 value={searchByType}
@@ -83,7 +83,7 @@ const Header = ({
                         </option>
                     );
                 })}
-            </select>
+            </Select>
         </Container>
     );
 };
