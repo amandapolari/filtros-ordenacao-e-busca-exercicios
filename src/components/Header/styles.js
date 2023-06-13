@@ -11,6 +11,9 @@ export const Container = styled.header`
 export const Select = styled.select`
     padding: 0.5vh;
     border-radius: 10px;
+    &:hover{
+        cursor: pointer;
+    }
 `;
 
 export const Input = styled.input`
@@ -22,4 +25,7 @@ export const Button = styled.button`
     font-size: 1.8;
     padding: 0.5vh;
     border-radius: 10px;
+    &:hover{
+        cursor: pointer;
+    }
 `;
