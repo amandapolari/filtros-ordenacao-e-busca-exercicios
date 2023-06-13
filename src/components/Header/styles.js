@@ -17,3 +17,9 @@ export const Input = styled.input`
     padding: 0.5vh;
     border-radius: 10px;
 `;
+
+export const Button = styled.button`
+    font-size: 1.8;
+    padding: 0.5vh;
+    border-radius: 10px;
+`;

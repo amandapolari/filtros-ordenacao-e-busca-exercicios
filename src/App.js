@@ -27,6 +27,13 @@ function App() {
     const [sortSearch, setSortSearch] = useState('');
     const [searchByType, setSearchByType] = useState('');
 
+    const clearFilters = () => {
+        setSearch('');
+        setIdFilter('');
+        setSortSearch('');
+        setSearchByType('');
+    };
+
     return (
         <>
             <GlobalStyle />
@@ -39,6 +46,7 @@ function App() {
                 setSortSearch={setSortSearch}
                 searchByType={searchByType}
                 setSearchByType={setSearchByType}
+                clearFilters={clearFilters}
             />
             <CardsContainer>
                 {pokemons

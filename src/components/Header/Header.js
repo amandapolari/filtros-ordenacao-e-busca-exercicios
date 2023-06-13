@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Select, Input } from './styles';
+import { Container, Select, Input, Button } from './styles';
 
 const Header = ({
     setSearch,
@@ -10,6 +10,7 @@ const Header = ({
     setSortSearch,
     searchByType,
     setSearchByType,
+    clearFilters,
 }) => {
     // console.log(sortSearch);
     // console.log(searchByType);
@@ -84,6 +85,13 @@ const Header = ({
                     );
                 })}
             </Select>
+            <Button
+                onClick={(event) => {
+                    clearFilters(event);
+                }}
+            >
+                Limpar Filtros
+            </Button>
         </Container>
     );
 };
