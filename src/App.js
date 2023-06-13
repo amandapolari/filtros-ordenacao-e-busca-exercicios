@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import { useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import pokemons from './pokemon/pokemon.json';
@@ -22,6 +23,7 @@ function App() {
     const [search, setSearch] = useState('');
     const [idFilter, setIdFilter] = useState('');
     const [sortSearch, setSortSearch] = useState('');
+    const [searchByType, setSearchByType] = useState('');
 
     return (
         <>
@@ -33,6 +35,8 @@ function App() {
                 setSearch={setSearch}
                 sortSearch={sortSearch}
                 setSortSearch={setSortSearch}
+                searchByType={searchByType}
+                setSearchByType={setSearchByType}
             />
             <CardsContainer>
                 {pokemons
@@ -45,6 +49,16 @@ function App() {
                         return pokemon.name.english
                             .toLowerCase()
                             .includes(search.toLowerCase());
+                    })
+                    .filter((pokemon) => {
+                        if (pokemon.type.includes(searchByType)) {
+                            return pokemon;
+                        } else if (
+                            !searchByType ||
+                            searchByType === 'Selecione um tipo'
+                        ) {
+                            return pokemons;
+                        }
                     })
                     .sort((a, b) => {
                         if (sortSearch === 'Crescente') {

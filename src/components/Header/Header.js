@@ -8,8 +8,11 @@ const Header = ({
     search,
     sortSearch,
     setSortSearch,
+    searchByType,
+    setSearchByType,
 }) => {
-    console.log(sortSearch);
+    // console.log(sortSearch);
+    // console.log(searchByType);
 
     const pokemontypesArray = [
         'Normal',
@@ -64,8 +67,15 @@ const Header = ({
                 <option>Crescente</option>
                 <option>Decrescente</option>
             </select>
-            <select name="tipo" id="tipo">
-                <option value="">Selecione um tipo</option>
+            <select
+                name="tipo"
+                id="tipo"
+                value={searchByType}
+                onChange={(event) => {
+                    setSearchByType(event.target.value);
+                }}
+            >
+                <option>Selecione um tipo</option>
                 {pokemontypesArray.map((type) => {
                     return (
                         <option key={type} value={type}>
