@@ -1,70 +1,99 @@
-import React from "react";
-import { Container } from "./styles";
+import React from 'react';
+import { Container, Select, Input, Button } from './styles';
 
-const Header = (props) => {
-  const pokemontypesArray = [
-    "Normal",
-    "Fire",
-    "Water",
-    "Grass",
-    "Flying",
-    "Fighting",
-    "Poison",
-    "Electric",
-    "Ground",
-    "Rock",
-    "Psychic",
-    "Ice",
-    "Bug",
-    "Ghost",
-    "Steel",
-    "Dragon",
-    "Dark",
-    "Fairy",
-  ];
+const Header = ({
+    setSearch,
+    setIdFilter,
+    idFilter,
+    search,
+    sortSearch,
+    setSortSearch,
+    searchByType,
+    setSearchByType,
+    clearFilters,
+}) => {
+    // console.log(sortSearch);
+    // console.log(searchByType);
 
-  const handleSearch = (e) => {
-    props.setPesquisa(e.target.value);
-  };
+    const pokemontypesArray = [
+        'Normal',
+        'Fire',
+        'Water',
+        'Grass',
+        'Flying',
+        'Fighting',
+        'Poison',
+        'Electric',
+        'Ground',
+        'Rock',
+        'Psychic',
+        'Ice',
+        'Bug',
+        'Ghost',
+        'Steel',
+        'Dragon',
+        'Dark',
+        'Fairy',
+    ];
 
-   const handleIdSearch = (e) => {
-    props.setIdFilter(e.target.value);
-  };
+    const handleSearch = (e) => {
+        setSearch(e.target.value);
+    };
 
-  return (
-    <Container>
-        <input
-        type="number"
-        placeholder="Buscar por id"
-        onChange={handleIdSearch}
-        value={props.idFilter}
-      />
-      <input
-        type="text"
-        placeholder="Buscar por nome"
-        onChange={handleSearch}
-        value={props.pesquisa}
-      />
-      <select>
-        <option value="">Ordenar</option>
-        <option value="">Crescente</option>
-        <option value="">Decrescente</option>
-      </select>
-      <select
-        name="tipo"
-        id="tipo"
-          >
-        <option value="">Selecione um tipo</option>
-        {pokemontypesArray.map((type) => {
-          return (
-            <option key={type} value={type}>
-              {type}
-            </option>
-          );
-        })}
-      </select>
-    </Container>
-  );
+    const handleIdSearch = (e) => {
+        setIdFilter(e.target.value);
+    };
+
+    return (
+        <Container>
+            <Input
+                type="number"
+                placeholder="Buscar por id"
+                onChange={handleIdSearch}
+                value={idFilter}
+            />
+            <Input
+                type="text"
+                placeholder="Buscar por nome"
+                onChange={handleSearch}
+                value={search}
+            />
+            <Select
+                value={sortSearch}
+                onChange={(event) => {
+                    setSortSearch(event.target.value);
+                }}
+            >
+                <option>Ordenar</option>
+                <option>Crescente</option>
+                <option>Decrescente</option>
+            </Select>
+            <Select
+                name="tipo"
+                id="tipo"
+                value={searchByType}
+                onChange={(event) => {
+                    setSearchByType(event.target.value);
+                }}
+            >
+                <option>Selecione um tipo</option>
+                {pokemontypesArray.map((type) => {
+                    return (
+                        <option key={type} value={type}>
+                            {type}
+                        </option>
+                    );
+                })}
+            </Select>
+            <Button
+                onClick={(event) => {
+                    clearFilters(event);
+                }}
+            >
+                Limpar Filtros
+            </Button>
+        </Container>
+    );
 };
 
 export default Header;
